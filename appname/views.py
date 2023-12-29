@@ -39,7 +39,9 @@ def get_bookswithgenre(request, genre=None):
     else:
         books = Books.objects.all()
 
-    return render(request, 'home.html', {'books': books})
+    books_list = [{'title': book.title, 'author': book.author, 'genre': book.genre} for book in books]
+
+    return JsonResponse({'books': books_list})
 
 
 
