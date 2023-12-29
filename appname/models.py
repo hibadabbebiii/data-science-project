@@ -21,7 +21,9 @@ class Books(models.Model):
      'collection': 'book-database.Books'  # Specify the MongoDB collection name
  }
 
-
+ @classmethod
+ def filter_by_genre(cls, genre):
+     return cls.objects.filter(genre__iexact=genre)
 
 
 class Person(models.Model):
